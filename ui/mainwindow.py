@@ -26,8 +26,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        html = QUrl.fromLocalFile(r"/home/umberto/Documents/apps/projects/webgis/map.html")
-        self.webView.load(html)
+        dirname = os.path.dirname(os.path.abspath(__file__))
+        root_dir = os.path.dirname(dirname)
+        html = 'map.html'
+        url = QUrl.fromLocalFile(os.path.join(root_dir,  html))
+        self.webView.load(url)
         
         # https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
         self.channel = QWebChannel(self)
