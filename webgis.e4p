@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project webgis -->
-<!-- Saved: 2017-12-06, 11:46:42 -->
+<!-- Saved: 2017-12-06, 16:45:54 -->
 <!-- Copyright (C) 2017 minorau, umbertofilippo@tiscali.it -->
 <Project version="5.1">
   <Language></Language>
@@ -16,8 +16,13 @@
   <Sources>
     <Source>__init__.py</Source>
     <Source>main.py</Source>
+    <Source>ui/__init__.py</Source>
+    <Source>ui/mainwindow.py</Source>
+    <Source>ui/ui_mainwindow.py</Source>
   </Sources>
-  <Forms/>
+  <Forms>
+    <Form>ui/mainwindow.ui</Form>
+  </Forms>
   <Translations/>
   <Resources/>
   <Interfaces/>
