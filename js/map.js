@@ -18,5 +18,6 @@ new QWebChannel(qt.webChannelTransport, function (channel) {
 
 // https://snorfalorpagus.net/blog/2014/09/13/embedding-a-leaflet-map-in-a-qt-application/
 map.on('moveend',
-       window.handler.set_lbl_coord(JSON.stringify(map.getCenter()));
+       window.handler.set_lbl_coord(JSON.stringify(map.getCenter()))
 );
+

@@ -5,7 +5,7 @@ Module implementing MainWindow.
 """
 
 import os.path
-from PyQt5.QtCore import QObject,  pyqtSlot
+from PyQt5.QtCore import QObject,  pyqtSlot,  QUrl
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebChannel import QWebChannel
 from PyQt5.QtWebEngineWidgets import QWebEngineView
@@ -26,8 +26,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        html = r"C:\DATI\git\webgis\map.html"
-        self.webView.setHtml("<html><head></head><body><h1>ciao</h1></body></html>")
+        html = QUrl.fromLocalFile(r"/home/umberto/Documents/apps/projects/webgis/map.html")
+        self.webView.load(html)
         
         # https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
         self.channel = QWebChannel(self)
