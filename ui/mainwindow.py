@@ -8,7 +8,6 @@ import os.path
 from PyQt5.QtCore import QObject,  pyqtSlot,  QUrl
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebChannel import QWebChannel
-from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 from .ui_mainwindow import Ui_MainWindow
 
@@ -52,7 +51,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         
         @param p0 DESCRIPTION
-        @type bool
+        @type boolz
         """
         # TODO: not implemented yet
         pass
@@ -60,11 +59,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
     class CallHandler(QObject):
         @pyqtSlot(str)
-        def set_lbl_coord(self, map_center):
+        def set_lbl_coord(self,  map_center = None):
             """
             Slot documentation goes here.
             
-            @param p0 DESCRIPTION
-            @type bool
+            @param map_center DESCRIPTION
+            @type str
             """
             self.lblCoord.setText(map_center)
+            

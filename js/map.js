@@ -14,10 +14,11 @@ var map = new ol.Map({
 // https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
 new QWebChannel(qt.webChannelTransport, function (channel) {
                 window.handler = channel.objects.handler;
+                window.handler.set_lbl_coord(JSON.stringify(map.getView().getCenter()));
 });
 
 // https://snorfalorpagus.net/blog/2014/09/13/embedding-a-leaflet-map-in-a-qt-application/
 map.on('moveend',
-       window.handler.set_lbl_coord(JSON.stringify(map.getCenter()))
+       QWebChannel
 );
 
