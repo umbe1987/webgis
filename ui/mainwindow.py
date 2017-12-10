@@ -5,7 +5,7 @@ Module implementing MainWindow.
 """
 
 import os.path
-from PyQt5.QtCore import QObject,  pyqtSlot,  QUrl
+from PyQt5.QtCore import pyqtSlot,  QUrl
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebChannel import QWebChannel
 
@@ -31,11 +31,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         url = QUrl.fromLocalFile(os.path.join(root_dir,  html))
         self.webView.load(url)
         
-        # https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
-        self.channel = QWebChannel(self)
-        self.handler = self.CallHandler()
-        self.channel.registerObject('handler', self.handler)
-        self.webView.page().setWebChannel(self.channel)
+        # https://stackoverflow.com/questions/41877799/get-dynamic-content-using-pyqt
+        self.webchannel = QWebChannel(self)
+        self.webView.page().setWebChannel(self.webchannel)
+        self.webchannel.registerObject('MyChannel', self)
     
     @pyqtSlot()
     def on_btnMilan_clicked(self):
@@ -51,20 +50,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         
         @param p0 DESCRIPTION
-        @type boolz
+        @type bool
         """
         # TODO: not implemented yet
         pass
         
-    # https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
-    class CallHandler(QObject):
-        @pyqtSlot(str)
-        def set_lbl_coord(self,  map_center = None):
-            """
-            Slot documentation goes here.
-            
-            @param map_center DESCRIPTION
-            @type str
-            """
+    # https://stackoverflow.com/questions/41877799/get-dynamic-content-using-pyqt
+    # https://stackoverflow.com/questions/28565254/how-to-use-qt-webengine-and-qwebchannel
+    @pyqtSlot(str)
+    def set_lbl_coord(self,  map_center = None):
+        """
+        Slot documentation goes here.
+        """
+        if map_center:
             self.lblCoord.setText(map_center)
             

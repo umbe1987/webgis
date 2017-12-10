@@ -11,14 +11,14 @@ var map = new ol.Map({
     })
 });
 
-// https://stackoverflow.com/questions/39544089/how-can-i-access-python-code-from-javascript-in-pyqt-5-7
-new QWebChannel(qt.webChannelTransport, function (channel) {
-                window.handler = channel.objects.handler;
-                window.handler.set_lbl_coord(JSON.stringify(map.getView().getCenter()));
+// https://stackoverflow.com/questions/41877799/get-dynamic-content-using-pyqt
+// https://stackoverflow.com/questions/28565254/how-to-use-qt-webengine-and-qwebchannel
+$(document).ready(function(){
+    new QWebChannel(qt.webChannelTransport, function (channel) {
+        MyChannel = channel.objects.MyChannel;
+        map.on('moveend',
+               MyChannel.set_lbl_coord(JSON.stringify(map.getView().getCenter()))
+        );
+    });
 });
-
-// https://snorfalorpagus.net/blog/2014/09/13/embedding-a-leaflet-map-in-a-qt-application/
-map.on('moveend',
-       QWebChannel
-);
 
