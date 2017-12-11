@@ -13,12 +13,14 @@ var map = new ol.Map({
 
 // https://stackoverflow.com/questions/41877799/get-dynamic-content-using-pyqt
 // https://stackoverflow.com/questions/28565254/how-to-use-qt-webengine-and-qwebchannel
+// https://snorfalorpagus.net/blog/2014/09/13/embedding-a-leaflet-map-in-a-qt-application/
+
 $(document).ready(function(){
     new QWebChannel(qt.webChannelTransport, function (channel) {
         MyChannel = channel.objects.MyChannel;
-        map.on('moveend',
-               MyChannel.set_lbl_coord(JSON.stringify(map.getView().getCenter()))
-        );
+        var set_lbl_coord = function () { MyChannel.set_lbl_coord(JSON.stringify(map.getView().getCenter())) };
+        map.on('moveend', set_lbl_coord);
+        set_lbl_coord();
     });
 });
 
