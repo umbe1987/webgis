@@ -35,14 +35,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.webchannel = QWebChannel(self)
         self.webView.page().setWebChannel(self.webchannel)
         self.webchannel.registerObject('MyChannel', self)
+        
+        # zoom to Milan when button is clicked
+        self.btnMilan.clicked.connect(self.on_btnMilan_clicked)
     
+    # https://stackoverflow.com/a/41780519/1979665
+    # https://gist.github.com/epifanio/a1152047086def509906fa71a9eb11ad
+    # https://stackoverflow.com/a/40553894/1979665
     @pyqtSlot()
     def on_btnMilan_clicked(self):
         """
         Slot documentation goes here.
         """
         # TODO: not implemented yet
-        raise NotImplementedError
+        lng = 9.19034
+        lat = 45.46416
+        self.webView.page().runJavaScript('map.getView().animate({{center:[{lng}, {lat}], duration: 2000, zoom: 12}});'.format(lng = lng,  lat = lat),
+                                                            self.js_callback)
+        
+    def js_callback(self,  result):
+        print(result)
     
     @pyqtSlot(bool)
     def on_webView_loadFinished(self, p0):
