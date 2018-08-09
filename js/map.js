@@ -20,13 +20,12 @@ $(document).ready(function(){
     new QWebChannel(qt.webChannelTransport, function (channel) {
         MyChannel = channel.objects.MyChannel;
         var set_lbl_coord = function () {
-			var center_coord = map.getView().getCenter()
+			var center_coord = map.getView().getCenter();
 			MyChannel.set_lbl_coord(JSON.stringify(center_coord, function(key, val) {
 				return val.toFixed ? Number(val.toFixed(6)) : val;
 			}));
 			};
         map.on('moveend', set_lbl_coord);
-        set_lbl_coord();
     });
 });
 
