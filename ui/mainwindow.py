@@ -9,7 +9,7 @@ from PyQt5.QtCore import pyqtSlot,  QUrl
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebChannel import QWebChannel
 
-from .ui_mainwindow import Ui_MainWindow
+from .Ui_mainwindow import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
