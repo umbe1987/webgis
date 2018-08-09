@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainwindow.ui'
+# Form implementation generated from reading ui file 'C:\DATI\git\webgis\ui\mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -11,19 +11,30 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1078, 824)
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
-        self.splitter = QtWidgets.QSplitter(self.centralWidget)
-        self.splitter.setGeometry(QtCore.QRect(230, 50, 341, 501))
-        self.splitter.setOrientation(QtCore.Qt.Vertical)
-        self.splitter.setObjectName("splitter")
-        self.lblCoord = QtWidgets.QLabel(self.splitter)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setObjectName("gridLayout")
+        self.lblCoord = QtWidgets.QLabel(self.centralWidget)
+        self.lblCoord.setMaximumSize(QtCore.QSize(16777215, 32))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lblCoord.setFont(font)
+        self.lblCoord.setAlignment(QtCore.Qt.AlignCenter)
         self.lblCoord.setObjectName("lblCoord")
-        self.webView = QtWebEngineWidgets.QWebEngineView(self.splitter)
+        self.gridLayout.addWidget(self.lblCoord, 0, 0, 1, 1)
+        self.webView = QtWebEngineWidgets.QWebEngineView(self.centralWidget)
         self.webView.setObjectName("webView")
-        self.btnMilan = QtWidgets.QPushButton(self.splitter)
+        self.gridLayout.addWidget(self.webView, 1, 0, 1, 1)
+        self.btnMilan = QtWidgets.QPushButton(self.centralWidget)
         self.btnMilan.setObjectName("btnMilan")
+        self.gridLayout.addWidget(self.btnMilan, 2, 0, 1, 1)
+        self.verticalLayout.addLayout(self.gridLayout)
         MainWindow.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(MainWindow)
