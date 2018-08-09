@@ -31,9 +31,9 @@ class Ui_MainWindow(object):
         self.webView = QtWebEngineWidgets.QWebEngineView(self.centralWidget)
         self.webView.setObjectName("webView")
         self.gridLayout.addWidget(self.webView, 1, 0, 1, 1)
-        self.btnMilan = QtWidgets.QPushButton(self.centralWidget)
-        self.btnMilan.setObjectName("btnMilan")
-        self.gridLayout.addWidget(self.btnMilan, 2, 0, 1, 1)
+        self.btnGoTo = QtWidgets.QPushButton(self.centralWidget)
+        self.btnGoTo.setObjectName("btnGoTo")
+        self.gridLayout.addWidget(self.btnGoTo, 2, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
         MainWindow.setCentralWidget(self.centralWidget)
 
@@ -44,6 +44,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.lblCoord.setText(_translate("MainWindow", "lblCoord"))
-        self.btnMilan.setText(_translate("MainWindow", "Go to Milan"))
+        self.btnGoTo.setText(_translate("MainWindow", "Go to Location"))
 
 from PyQt5 import QtWebEngineWidgets

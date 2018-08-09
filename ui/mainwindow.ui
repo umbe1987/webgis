@@ -44,9 +44,9 @@
        <widget class="QWebEngineView" name="webView" native="true"/>
       </item>
       <item row="2" column="0">
-       <widget class="QPushButton" name="btnMilan">
+       <widget class="QPushButton" name="btnGoTo">
         <property name="text">
-         <string>Go to Milan</string>
+         <string>Go to Location</string>
         </property>
        </widget>
       </item>
